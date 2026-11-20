@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <title>Romer Pena | Mechanical Engineer</title>
 <meta name="description" content="Romer Pena, mechanical engineering student at UT Austin and Powertrain Co-Lead for Longhorn Baja Racing. Drivetrain design, CAD, test and validation.">
 <style>
@@ -49,6 +50,9 @@
 
   /* top strip */
   .strip { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding-bottom: 14px; border-bottom: 0.75px solid var(--line); font-size: 13px; color: var(--muted); }
+  .brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .brand .logo { height: 40px; width: auto; display: block; }
+  .strip { align-items: center; }
   .strip nav { display: flex; gap: 22px; flex-wrap: wrap; }
   .strip nav a { text-decoration: none; }
   .strip nav a:hover { color: var(--ink); text-decoration: underline; text-decoration-color: var(--red-ink); text-underline-offset: 4px; }
@@ -203,7 +207,7 @@
 </style>
 <script type="importmap">{ "imports": { "three": "./vendor/three.module.js" } }</script>
 </head>
-<body>
+<body id="top">
 <div class="sheet">
   <div class="zones-x top"><span>8</span><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span></div>
   <div class="zones-x bottom"><span>8</span><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span></div>
@@ -212,7 +216,13 @@
 
   <div class="inner">
     <div class="strip">
-      <span class="dwg">Romer Pena, mechanical engineering portfolio</span>
+      <a class="brand" href="#top" aria-label="Back to top"><svg class="logo" viewBox="0 0 232 186" role="img" aria-label="Romer Pena logo"><g transform="translate(8,8)">
+<rect x="2.5" y="2.5" width="210.776025390625" height="105.7771728515625" fill="none" stroke="var(--ink)" stroke-width="5"/>
+<path d="M7.9250244140625 0.0V-68.7771728515625H66.3380126953125Q73.9467041015625 -68.7771728515625 78.982568359375 -65.63424072265624Q84.0184326171875 -62.491308593750006 86.549951171875 -57.37120361328125Q89.0814697265625 -52.2510986328125 89.0814697265625 -46.27392578125Q89.0814697265625 -39.55654296875 86.008642578125 -34.20654296875Q82.93581542968751 -28.856542968750002 76.876025390625 -25.702197265625003L90.70429687500001 0.0H65.26962890625L54.367431640625 -22.184814453125H30.4564453125V0.0ZM30.4564453125 -38.2575927734375H58.665234375000004Q61.8989501953125 -38.2575927734375 63.94732666015625 -40.2358642578125Q65.995703125 -42.2141357421875 65.995703125 -45.5880615234375Q65.995703125 -47.870678710937504 65.050048828125 -49.4576416015625Q64.10439453125001 -51.0446044921875 62.483190917968756 -51.8630859375Q60.8619873046875 -52.6815673828125 58.665234375000004 -52.6815673828125H30.4564453125Z M98.72502441406252 0.0V-68.7771728515625H152.906494140625Q159.6836669921875 -68.7771728515625 164.82659912109375 -65.76141357421875Q169.96953125000002 -62.745654296875 172.83529052734377 -57.386962890625Q175.7010498046875 -52.028271484375004 175.7010498046875 -45.04388870804399Q175.7010498046875 -37.9250244140625 172.78529052734376 -32.50491943359375Q169.86953125000002 -27.084814453125002 164.70377197265628 -24.107641601562502Q159.53801269531252 -21.130468750000002 152.815185546875 -21.130468750000002H121.2564453125V0.0ZM121.2564453125 -37.22607421875H146.53151855468752Q150.70725911458334 -37.22607421875 152.79169108072918 -39.21519825556507Q154.87612304687502 -41.20432229238014 154.87612304687502 -44.94994147313784Q154.87612304687502 -47.502197265625 153.92054373604913 -49.20597913587416Q152.96496442522323 -50.90976100612332 151.12379080636163 -51.79566419446791Q149.28261718750002 -52.6815673828125 146.53151855468752 -52.6815673828125H121.2564453125Z" transform="translate(16.07,89.78)" fill="var(--ink)"/>
+<line x1="107.8880126953125" y1="110.7771728515625" x2="107.8880126953125" y2="128.7771728515625" stroke="var(--ink)" stroke-width="5"/>
+<path d="M83.8880126953125 156.7771728515625 L107.8880126953125 126.7771728515625 L131.8880126953125 156.7771728515625 Z" fill="var(--red-ink)"/>
+<line x1="43.8880126953125" y1="158.2771728515625" x2="171.8880126953125" y2="158.2771728515625" stroke="var(--ink)" stroke-width="3"/>
+<g stroke="var(--ink)" stroke-width="1.6"><line x1="49" y1="159.7771728515625" x2="39" y2="169.7771728515625"/><line x1="60" y1="159.7771728515625" x2="50" y2="169.7771728515625"/><line x1="71" y1="159.7771728515625" x2="61" y2="169.7771728515625"/><line x1="82" y1="159.7771728515625" x2="72" y2="169.7771728515625"/><line x1="93" y1="159.7771728515625" x2="83" y2="169.7771728515625"/><line x1="104" y1="159.7771728515625" x2="94" y2="169.7771728515625"/><line x1="115" y1="159.7771728515625" x2="105" y2="169.7771728515625"/><line x1="126" y1="159.7771728515625" x2="116" y2="169.7771728515625"/><line x1="137" y1="159.7771728515625" x2="127" y2="169.7771728515625"/><line x1="148" y1="159.7771728515625" x2="138" y2="169.7771728515625"/><line x1="159" y1="159.7771728515625" x2="149" y2="169.7771728515625"/><line x1="170" y1="159.7771728515625" x2="160" y2="169.7771728515625"/></g></g></svg><span class="dwg">Romer Pena, mechanical engineering portfolio</span></a>
       <nav aria-label="Sections">
         <a href="#revisions">Revision history</a>
         <a href="#drawings">Drawings</a>

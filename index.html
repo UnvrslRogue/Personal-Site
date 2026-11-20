@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Romer Pena | Mechanical Engineer</title>
+<meta name="description" content="Romer Pena — mechanical engineering student at UT Austin and Powertrain Co-Lead for Longhorn Baja Racing. Drivetrain design, CAD, test and validation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* dark mode (default): black + #600505 */
+    --bg: #000000; --bg2: #070707; --card: #0d0d0e; --line: #1f1f22;
+    --ink: #f3f1ef; --muted: #9a979c; --body: #cfcbcc;
+    --accent: #600505;           /* fills: buttons, dots, glows */
+    --accent-text: #d0453f;      /* readable tint of the same red for small text */
+    --accent-hover: #7a0a0a; --btn-text: #ffffff;
+    --glow: rgba(96,5,5,.45); --glow-soft: rgba(96,5,5,.10); --ring: rgba(208,69,63,.22);
+    --tag-border: rgba(208,69,63,.40); --tag-bg: rgba(96,5,5,.22);
+    --grid: rgba(255,255,255,.03); --nav-bg: rgba(0,0,0,.72); --nav-line: rgba(255,255,255,.06);
+    --ghost-hover-bg: #0f0f10; --ghost-hover-line: #34343a;
+    --card-hi: #161618; --stat-bg: #050505;
+    --chip-bg: #141416; --chip-line: #26262a; --chip-ink: #dedadb;
+    --pill-bg: rgba(13,13,14,.85);
+    --grad-a: #ffffff; --grad-b: #e07b76; --grad-c: #b3201a;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      /* light mode: white + burnt orange */
+      --bg: #ffffff; --bg2: #faf7f3; --card: #ffffff; --line: #ebe5de;
+      --ink: #1b1a19; --muted: #6d6a67; --body: #3d3a37;
+      --accent: #bf5700; --accent-text: #bf5700; --accent-hover: #a54b00; --btn-text: #ffffff;
+      --glow: rgba(191,87,0,.16); --glow-soft: rgba(191,87,0,.08); --ring: rgba(191,87,0,.18);
+      --tag-border: rgba(191,87,0,.35); --tag-bg: rgba(191,87,0,.07);
+      --grid: rgba(0,0,0,.035); --nav-bg: rgba(255,255,255,.8); --nav-line: rgba(0,0,0,.06);
+      --ghost-hover-bg: #f6f2ed; --ghost-hover-line: #d9d1c7;
+      --card-hi: #f4efe9; --stat-bg: #fbf8f5;
+      --chip-bg: #f6f1eb; --chip-line: #e9e0d6; --chip-ink: #3d3a37;
+      --pill-bg: rgba(255,255,255,.9);
+      --grad-a: #1b1a19; --grad-b: #d9731a; --grad-c: #bf5700;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+  /* nav */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; backdrop-filter: blur(12px); background: var(--nav-bg); border-bottom: 1px solid var(--nav-line); }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { font-weight: 800; letter-spacing: -.02em; font-size: 18px; }
+  .logo span { color: var(--accent-text); }
+  .links { display: flex; gap: 28px; font-size: 14px; color: var(--muted); }
+  .links a:hover { color: var(--ink); }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 999px; font-weight: 600; font-size: 14px; transition: transform .15s, background .15s; }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--accent); color: var(--btn-text); }
+  .btn-primary:hover { background: var(--accent-hover); }
+  .btn-ghost { border: 1px solid var(--line); color: var(--ink); }
+  .btn-ghost:hover { border-color: var(--ghost-hover-line); background: var(--ghost-hover-bg); }
+
+  /* hero */
+  .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; padding-top: 64px; }
+  .hero::before { content: ""; position: absolute; inset: 0; background:
+      radial-gradient(800px 500px at 78% 45%, var(--glow), transparent 60%),
+      linear-gradient(var(--grid) 1px, transparent 1px) 0 0/48px 48px,
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px) 0 0/48px 48px; }
+  .hero .wrap { position: relative; display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px; align-items: center; width: 100%; }
+  .eyebrow { font-family: var(--mono); font-size: 13px; color: var(--accent-text); letter-spacing: .08em; text-transform: uppercase; }
+  h1 { font-size: clamp(40px, 5vw, 64px); line-height: 1.02; letter-spacing: -.035em; font-weight: 800; margin: 18px 0 20px; }
+  h1 .grad { background: linear-gradient(92deg, var(--grad-a) 0%, var(--grad-b) 50%, var(--grad-c) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .lede { font-size: 18px; color: var(--body); max-width: 540px; }
+  .cta { display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; }
+  .stats { display: flex; gap: 40px; margin-top: 48px; flex-wrap: wrap; }
+  .stat b { display: block; font-size: 26px; font-weight: 800; letter-spacing: -.02em; }
+  .stat span { font-size: 13px; color: var(--muted); }
+  #hero-viewer { height: 560px; position: relative; }
+  .viewer-tag { position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); font-family: var(--mono); font-size: 11.5px; color: var(--muted); background: var(--pill-bg); border: 1px solid var(--line); padding: 6px 12px; border-radius: 999px; white-space: nowrap; }
+
+  section { padding: 120px 0; }
+  .section-head { margin-bottom: 56px; max-width: 720px; }
+  h2 { font-size: clamp(32px, 4vw, 48px); letter-spacing: -.03em; line-height: 1.08; font-weight: 800; margin-top: 12px; }
+  .section-head p { color: var(--muted); font-size: 17px; margin-top: 16px; }
+
+  /* about */
+  #about { background: var(--bg2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+  .about-copy p { color: var(--body); font-size: 17px; margin-bottom: 18px; }
+  .about-copy p strong { color: var(--ink); }
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before { content: ""; position: absolute; left: 5px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(var(--accent), var(--glow-soft)); }
+  .t-item { position: relative; padding-bottom: 26px; }
+  .t-item::before { content: ""; position: absolute; left: -28px; top: 7px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg2); border: 2px solid var(--accent-text); }
+  .t-item.now::before { background: var(--accent-text); box-shadow: 0 0 0 6px var(--ring); }
+  .t-date { font-family: var(--mono); font-size: 12px; color: var(--accent-text); }
+  .t-title { font-weight: 700; font-size: 16px; margin-top: 2px; }
+  .t-desc { color: var(--muted); font-size: 14.5px; margin-top: 2px; }
+
+  /* projects */
+  .project { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; margin-bottom: 110px; }
+  .project.flip { grid-template-columns: 1fr 1.1fr; }
+  .project.flip .viewer-card { order: 2; }
+  .viewer-card { position: relative; background: radial-gradient(500px 340px at 50% 45%, var(--card-hi), var(--card)); border: 1px solid var(--line); border-radius: 22px; height: 460px; overflow: hidden; }
+  .viewer-card .viewer { position: absolute; inset: 0; }
+  .viewer-hint { position: absolute; top: 16px; left: 16px; font-family: var(--mono); font-size: 11.5px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+  .viewer-hint i { width: 7px; height: 7px; border-radius: 50%; background: #3ddc84; box-shadow: 0 0 8px #3ddc84; }
+  .placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px; color: var(--muted); }
+  .placeholder svg { width: 220px; height: auto; margin-bottom: 18px; opacity: .9; }
+  .tag { display: inline-block; font-family: var(--mono); font-size: 11.5px; color: var(--accent-text); border: 1px solid var(--tag-border); background: var(--tag-bg); padding: 4px 10px; border-radius: 999px; margin-right: 6px; margin-bottom: 8px; }
+  .project h3 { font-size: 32px; letter-spacing: -.025em; line-height: 1.12; margin: 8px 0 14px; font-weight: 800; }
+  .project p { color: var(--body); font-size: 16px; margin-bottom: 14px; }
+  .specs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin-top: 22px; }
+  .spec { background: var(--card); padding: 14px 16px; }
+  .spec b { display: block; font-size: 20px; font-weight: 800; letter-spacing: -.02em; }
+  .spec span { font-size: 12px; color: var(--muted); }
+  ul.points { list-style: none; margin-top: 8px; }
+  ul.points li { position: relative; padding-left: 20px; color: var(--body); font-size: 15px; margin-bottom: 8px; }
+  ul.points li::before { content: ""; position: absolute; left: 0; top: 10px; width: 8px; height: 2px; background: var(--accent-text); }
+
+  .mini-projects { display: grid; grid-template-columns: 1fr; gap: 20px; }
+  .mini { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 36px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; }
+  .mini h3 { font-size: 26px; letter-spacing: -.02em; margin: 8px 0 12px; font-weight: 800; }
+  .mini p { color: var(--body); font-size: 15.5px; }
+  .big-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .big-stats div { background: var(--stat-bg); border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
+  .big-stats b { display: block; font-size: 30px; font-weight: 800; color: var(--accent-text); letter-spacing: -.02em; }
+  .big-stats span { font-size: 12.5px; color: var(--muted); }
+
+  /* experience + skills */
+  #experience { background: var(--bg2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .xp { display: grid; grid-template-columns: 220px 1fr; gap: 32px; padding: 30px 0; border-top: 1px solid var(--line); }
+  .xp:first-of-type { border-top: 0; padding-top: 0; }
+  .xp .when { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+  .xp h4 { font-size: 20px; letter-spacing: -.01em; }
+  .xp h4 span { color: var(--muted); font-weight: 500; }
+  .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 64px; }
+  .skill-box { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 24px; }
+  .skill-box h5 { font-size: 13px; font-family: var(--mono); color: var(--accent-text); font-weight: 500; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 12px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 7px; }
+  .chips span { font-size: 13px; background: var(--chip-bg); border: 1px solid var(--chip-line); padding: 4px 10px; border-radius: 8px; color: var(--chip-ink); }
+
+  /* contact */
+  #contact { text-align: center; }
+  #contact h2 { font-size: clamp(36px, 5vw, 60px); }
+  #contact p { color: var(--muted); font-size: 18px; margin: 18px auto 34px; max-width: 560px; }
+  #contact .cta { justify-content: center; }
+  footer { border-top: 1px solid var(--line); padding: 28px 0; color: var(--muted); font-size: 13px; }
+  footer .wrap { display: flex; justify-content: space-between; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .links { display: none; }
+    .hero .wrap, .about-grid, .project, .project.flip, .mini { grid-template-columns: minmax(0, 1fr); }
+    .hero .wrap > *, .project > *, .mini > * { min-width: 0; }
+    .stats { gap: 24px; }
+    nav .btn { padding: 9px 16px; }
+    .hero { padding-top: 96px; }
+    .project.flip .viewer-card { order: 0; }
+    #hero-viewer { height: 380px; }
+    .viewer-card { height: 360px; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .xp { grid-template-columns: 1fr; gap: 6px; }
+    section { padding: 88px 0; }
+  }
+</style>
+<script type="importmap">{ "imports": { "three": "./vendor/three.module.js" } }</script>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="logo">Romer Pena<span>.</span></a>
+    <div class="links">
+      <a href="#about">Journey</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="btn btn-primary" href="files/Romer_Pena_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Mechanical Engineer · UT Austin</div>
+      <h1>I design the parts<br>that <span class="grad">put power<br>to the ground.</span></h1>
+      <p class="lede">Powertrain Co-Lead for Longhorn Baja Racing, leading a 10-person team designing a four-wheel-drive drivetrain for our next off-road race car. I like problems you can hold in your hand: model it, machine it, test it, make it better.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#projects">See my work →</a>
+        <a class="btn btn-ghost" href="files/Romer_Pena_Resume.pdf" target="_blank" rel="noopener">Download resume</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>2×</b><span>promotions in one season</span></div>
+        <div class="stat"><b>+13.5%</b><span>engine power, my intake</span></div>
+        <div class="stat"><b>2+ yrs</b><span>IBM co-op</span></div>
+      </div>
+    </div>
+    <div id="hero-viewer">
+      <div class="viewer-tag">ERG_0008 · yoke steering wheel · drag to rotate</div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="eyebrow">My journey</div>
+        <h2>From early college to leading the drivetrain.</h2>
+        <div class="about-copy" style="margin-top:28px">
+          <p>I've always wanted to know <strong>how machines actually work</strong>: what happens between the engine firing and the wheels turning. Engineering is how I get to answer that with my own hands.</p>
+          <p>I graduated <strong>valedictorian</strong> of Navarro Early College High School through IBM's P-TECH program, which put me inside IBM as an intern straight out of high school. I've worked there as a co-op ever since, learning how real engineering organizations solve problems at scale.</p>
+          <p>At <strong>UT Austin</strong> I study Mechanical Engineering with a focus on Manufacturing and Design. In February 2026 I joined <strong>Longhorn Baja Racing</strong> as an ergonomics and powertrain member, designing the parts the driver touches: the steering wheel, hub, seat mount and brake bias bracket.</p>
+          <p>By October I was leading the gearbox project. By November that project had grown into a <strong>full 4WD system</strong>, and I was named <strong>Powertrain Co-Lead</strong>. Now I lead a 10-person team responsible for every part that moves power from the engine to the wheels.</p>
+        </div>
+      </div>
+      <div class="timeline reveal">
+        <div class="t-item"><div class="t-date">2024</div><div class="t-title">Valedictorian, Navarro ECHS</div><div class="t-desc">Graduated through IBM's P-TECH early-college pathway.</div></div>
+        <div class="t-item"><div class="t-date">JUN 2024</div><div class="t-title">IBM P-TECH Intern</div><div class="t-desc">Root-caused 100+ incident reports; changes cut platform downtime 22%.</div></div>
+        <div class="t-item"><div class="t-date">AUG 2024</div><div class="t-title">UT Austin · IBM Co-Op</div><div class="t-desc">Started B.S. Mechanical Engineering (Moody Scholar) while continuing at IBM.</div></div>
+        <div class="t-item"><div class="t-date">FEB 2026</div><div class="t-title">Joined Longhorn Baja Racing</div><div class="t-desc">Ergonomics &amp; Powertrain member: steering wheel, hub, seat mount, cockpit fit (−30% interference).</div></div>
+        <div class="t-item"><div class="t-date">SPRING 2026</div><div class="t-title">Intake redesign + dynamometer</div><div class="t-desc">Built a dyno from scratch and gained 13.5% brake power.</div></div>
+        <div class="t-item"><div class="t-date">OCT 2026</div><div class="t-title">Gearbox Project Lead</div><div class="t-desc">Took ownership of the gearbox, which grew into a full 4WD system.</div></div>
+        <div class="t-item now"><div class="t-date">NOV 2026 · NOW</div><div class="t-title">Powertrain Co-Lead</div><div class="t-desc">Leading a 10-person team on 4WD drivetrain design and powertrain packaging.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Selected work</div>
+      <h2>Real parts, on a real race car.</h2>
+      <p>Every model below is live: drag to spin it, scroll to zoom. These are my actual SolidWorks parts for Longhorn Baja Racing.</p>
+    </div>
+
+    <div class="project reveal">
+      <div class="viewer-card">
+        <div class="viewer" id="wheel-viewer"></div>
+        <div class="viewer-hint"><i></i>LIVE 3D · ERG_0008</div>
+      </div>
+      <div>
+        <span class="tag">Ergonomics</span><span class="tag">SolidWorks</span><span class="tag">2025–26 car</span>
+        <h3>Custom Yoke-Style Steering Wheel</h3>
+        <p>The steering wheel is the one part the driver never lets go of. Mine is a compact yoke: two sculpted, angled grips joined by a braced center plate, so the driver gets a firm hold with gloves on and more room in a tight cockpit.</p>
+        <ul class="points">
+          <li>Designed in SolidWorks and refined through multiple revisions; this is REV02, V02.</li>
+          <li>Built as a system: wheel, handle grips, steering sleeve and a mating hub, with a manufacturing drawing.</li>
+          <li>Part of a cockpit redesign that cut driver interference 30% by re-angling the steering column and seat.</li>
+        </ul>
+        <div class="specs">
+          <div class="spec"><b>258 mm</b><span>grip-to-grip width</span></div>
+          <div class="spec"><b>145 mm</b><span>tall, yoke profile</span></div>
+          <div class="spec"><b>42 mm</b><span>deep</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project flip reveal">
+      <div class="viewer-card">
+        <div class="viewer" id="casing-viewer"></div>
+        <div class="placeholder" id="casing-placeholder">
+          <svg viewBox="0 0 240 160" fill="none" stroke="currentColor" style="color:var(--accent-text)" stroke-width="1.6">
+            <rect x="40" y="30" width="110" height="100" rx="14" opacity=".9"/>
+            <circle cx="95" cy="80" r="30" opacity=".75"/>
+            <circle cx="95" cy="80" r="10"/>
+            <path d="M150 80h70M210 70v20M18 80h22" opacity=".8"/>
+            <path d="M95 130v24M85 150h20" opacity=".8"/>
+            <path d="M95 50 l10 -6 M95 50 l-10 -6" opacity=".5"/>
+          </svg>
+          <div style="font-family:var(--mono);font-size:12px">90° BOX · CASING (LEFT HALF)</div>
+          <div style="font-size:13px;margin-top:6px">Interactive model loading soon</div>
+        </div>
+        <div class="viewer-hint" id="casing-hint" style="display:none"><i></i>LIVE 3D · 90 BOX CASING</div>
+      </div>
+      <div>
+        <span class="tag">Powertrain</span><span class="tag">4WD</span><span class="tag">In development</span>
+        <h3>The 90° Box: turning power the corner to all four wheels</h3>
+        <p>A four-wheel-drive Baja car needs to send power from the gearbox out to a driveshaft running the length of the car. The 90° box is the compact right-angle gearbox that does it, and I'm leading its design.</p>
+        <ul class="points">
+          <li>Turns the gearbox's output 90° into the driveshaft through a pair of steel bevel gears at a 1:1 ratio.</li>
+          <li>Module-4 gears chosen to match our gearbox, and sourced off the shelf so the team can build it on schedule with the tools we have.</li>
+          <li>Split casing (left and right halves) designed around one goal: the smallest possible package. The left half fits inside a 139 × 140 × 49 mm envelope.</li>
+        </ul>
+        <div class="specs">
+          <div class="spec"><b>90°</b><span>power redirect</span></div>
+          <div class="spec"><b>1:1</b><span>bevel gear ratio</span></div>
+          <div class="spec"><b>M4 · 20T</b><span>steel bevel gears</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mini-projects reveal">
+      <div class="mini">
+        <div>
+          <span class="tag">Test &amp; Validation</span><span class="tag">ME 374C</span>
+          <h3>Small-Engine Intake Redesign + Dynamometer</h3>
+          <p>To prove an intake redesign worked, our 5-person team first had to build the instrument to measure it. We built a belt-and-drum brake dynamometer with a machined aluminum drum and an Arduino-based Hall effect speed sensor, then wrote interrupt-driven firmware that streamed data to MATLAB. The new intake used a 3D-printed manifold with a swept 45° bend and a lathe-turned 6061 aluminum velocity stack.</p>
+        </div>
+        <div class="big-stats">
+          <div><b>+13.5%</b><span>brake power at full throttle (496 → 563 W)</span></div>
+          <div><b>±0.08</b><span>N·m torque uncertainty</span></div>
+          <div><b>&lt;1%</b><span>run-to-run variation</span></div>
+          <div><b>2.7×</b><span>the 5% project target</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Experience</div>
+      <h2>Where I've been building.</h2>
+    </div>
+    <div class="reveal">
+      <div class="xp">
+        <div class="when">NOV 2026 – NOW</div>
+        <div><h4>Powertrain Co-Lead <span>· Longhorn Baja Racing</span></h4>
+          <ul class="points"><li>Co-lead a 10-person powertrain team; the gearbox project grew under my lead into a full 4WD drivetrain.</li><li>Lead powertrain repackaging; assembled the crankshaft-to-CVT, CVT-to-jackshaft and jackshaft-to-driveshaft links.</li><li>Previously Gearbox Project Lead (Oct 2026) and Ergonomics &amp; Powertrain member (Feb 2026).</li></ul></div>
+      </div>
+      <div class="xp">
+        <div class="when">AUG 2024 – NOW</div>
+        <div><h4>P-TECH Co-Op Intern <span>· IBM, Austin</span></h4>
+          <ul class="points"><li>Supported a 75% traffic increase by coordinating infrastructure capacity changes and monitoring reliability.</li><li>Coordinated cross-department service migrations with zero disruption.</li></ul></div>
+      </div>
+      <div class="xp">
+        <div class="when">JUN – AUG 2024</div>
+        <div><h4>P-TECH Intern <span>· IBM, Austin</span></h4>
+          <ul class="points"><li>Analyzed 100+ incident reports to find root causes; proposed changes that cut platform downtime 22%.</li><li>Presented findings to senior IBM leadership, earning a follow-on role building internal tools.</li></ul></div>
+      </div>
+    </div>
+    <div class="skills-grid reveal">
+      <div class="skill-box"><h5>Design</h5><div class="chips"><span>SolidWorks</span><span>Assemblies</span><span>Drawings</span><span>Powertrain packaging</span></div></div>
+      <div class="skill-box"><h5>Manufacturing</h5><div class="chips"><span>Lathe</span><span>Machining</span><span>3D printing</span><span>Fabrication</span><span>Assembly</span></div></div>
+      <div class="skill-box"><h5>Test</h5><div class="chips"><span>Dynamometers</span><span>DAQ</span><span>Calibration</span><span>Uncertainty</span><span>Root cause</span></div></div>
+      <div class="skill-box"><h5>Code</h5><div class="chips"><span>MATLAB</span><span>Python</span><span>Arduino C/C++</span><span>SQL</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap reveal">
+    <div class="eyebrow">Summer 2027</div>
+    <h2>Let's build something that moves.</h2>
+    <p>I'm looking for a Summer 2027 mechanical engineering internship in automotive, powertrain or manufacturing. I'd love to talk.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="mailto:rpenacalix@gmail.com">rpenacalix@gmail.com</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/romer-pena" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-ghost" href="files/Romer_Pena_Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>© 2026 Romer Pena</span><span>Austin, TX · Hook 'em 🤘</span></div></footer>
+
+<script type="module">
+import * as THREE from 'three';
+import { STLLoader } from './vendor/STLLoader.js';
+import { OrbitControls } from './vendor/OrbitControls.js';
+import { toCreasedNormals } from './vendor/BufferGeometryUtils.js';
+
+function viewer(el, url, { rotateX = 0, autoRotate = true, zoom = true, color = 0xb9b9c2, onFail } = {}) {
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  el.appendChild(renderer.domElement);
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 5000);
+  scene.add(new THREE.HemisphereLight(0xffffff, 0x2a1a10, 1.4));
+  const key = new THREE.DirectionalLight(0xffffff, 2.4); key.position.set(3, 5, 6); scene.add(key);
+  const dark = !matchMedia('(prefers-color-scheme: light)').matches;
+  const rim = new THREE.DirectionalLight(dark ? 0xb3201a : 0xbf5700, dark ? 3.0 : 1.6); rim.position.set(-6, 2, -4); scene.add(rim);
+  const fill = new THREE.DirectionalLight(0x9fb4ff, 0.6); fill.position.set(-4, -3, 5); scene.add(fill);
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true; controls.enablePan = false; controls.enableZoom = zoom;
+  controls.autoRotate = autoRotate; controls.autoRotateSpeed = 1.6;
+  const resize = () => { const w = el.clientWidth, h = el.clientHeight; renderer.setSize(w, h); camera.aspect = w / h; camera.updateProjectionMatrix(); };
+  new ResizeObserver(resize).observe(el); resize();
+  new STLLoader().load(url, raw => {
+    raw.rotateX(rotateX);
+    const geo = toCreasedNormals(raw, Math.PI / 5);
+    geo.center();
+    const mat = new THREE.MeshStandardMaterial({ color, metalness: 0.55, roughness: 0.38 });
+    const mesh = new THREE.Mesh(geo, mat);
+    mesh.rotation.set(-0.55, 0.75, 0.15);
+    scene.add(mesh);
+    geo.computeBoundingSphere();
+    const r = geo.boundingSphere.radius;
+    camera.position.set(0, r * 0.4, r * 3.4);
+    controls.minDistance = r * 1.6; controls.maxDistance = r * 6;
+    controls.update();
+    el.dataset.loaded = '1';
+  }, undefined, () => onFail && onFail());
+  (function loop() { requestAnimationFrame(loop); controls.update(); renderer.render(scene, camera); })();
+}
+
+viewer(document.getElementById('hero-viewer'), 'models/steering-wheel.stl', { rotateX: Math.PI / 2, zoom: false });
+viewer(document.getElementById('wheel-viewer'), 'models/steering-wheel.stl', { rotateX: Math.PI / 2, color: 0xd9d6d0 });
+
+// 90 Box casing: shows live once models/90box-casing.stl is added
+fetch('models/90box-casing.stl', { method: 'HEAD' }).then(r => {
+  if (!r.ok) return;
+  document.getElementById('casing-placeholder').style.display = 'none';
+  document.getElementById('casing-hint').style.display = 'flex';
+  viewer(document.getElementById('casing-viewer'), 'models/90box-casing.stl', { color: 0xc7c9cf });
+}).catch(() => {});
+
+if (location.hash === '#preview') { document.querySelectorAll('.reveal').forEach(e => e.classList.add('in')); document.querySelector('.hero').style.minHeight = '900px'; }
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

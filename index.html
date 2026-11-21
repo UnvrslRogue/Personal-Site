@@ -76,6 +76,11 @@
   .caption b { color: var(--ink); font-weight: 700; }
 
   .tb { grid-column: 1 / -1; margin-top: 34px; display: grid; grid-template-columns: 2.2fr 1.4fr 1.4fr 1fr 0.8fr; border: 1.5px solid var(--ink); }
+  .tbw { grid-column: 1 / -1; margin-top: 34px; display: grid; grid-template-columns: 168px minmax(0, 1fr); border: 1.5px solid var(--ink); }
+  .tbw .tb { grid-column: auto; margin-top: 0; border: 0; }
+  .tbw .tb > div, .tbw .tb > a { min-height: 92px; }
+  .portrait { margin: 0; border-right: 0.75px solid var(--line); overflow: hidden; }
+  .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; display: block; }
   .tb > div, .tb > a { padding: 10px 14px; border-right: 0.75px solid var(--line); border-bottom: 0.75px solid var(--line); min-height: 66px; }
   .tb > div:nth-child(5n) { border-right: 0; }
   .tb > div:nth-last-child(-n+5) { border-bottom: 0; }
@@ -192,6 +197,10 @@
     .hero, .dwg-sheet, .report, .two, .contact { grid-template-columns: minmax(0,1fr); }
     .view { min-height: 360px; margin-top: 20px; }
     .tb { grid-template-columns: 1fr 1fr; }
+    .tbw { grid-template-columns: minmax(0, 1fr); }
+    .portrait { border-right: 0; border-bottom: 0.75px solid var(--line); height: auto; width: 100%; aspect-ratio: 1 / 1; }
+    .portrait img { object-position: 50% 22%; }
+    .tbw .tb > div, .tbw .tb > a { min-height: 66px; }
     .tb > div { border-right: 0.75px solid var(--line) !important; border-bottom: 0.75px solid var(--line) !important; }
     .tb > div:nth-child(2n) { border-right: 0 !important; }
     .tb .big { grid-column: 1 / -1; border-right: 0 !important; }
@@ -246,6 +255,10 @@
         <div class="caption"><b>View A.</b> Steering wheel ERG_0008, isometric. Drag to rotate.</div>
       </div>
 
+      <div class="tbw">
+      <figure class="portrait">
+        <picture><source srcset="img/romer-pena.webp" type="image/webp"><img src="img/romer-pena.jpg" alt="Romer Pena in the Longhorn Baja Racing shop" width="640" height="800" loading="eager"></picture>
+      </figure>
       <div class="tb">
         <div class="big"><small>Drawn by</small><strong>Romer Pena</strong></div>
         <div><small>Title</small><strong>Mechanical engineering student</strong></div>
@@ -257,6 +270,7 @@
         <div><small>Contact</small><strong><a href="mailto:rpenacalix@gmail.com">rpenacalix@gmail.com</a></strong></div>
         <div><small>Location</small><strong>Austin, Texas</strong></div>
         <a class="cta" href="files/Romer_Pena_Resume.pdf" target="_blank" rel="noopener"><small>Status</small><strong>Open to Summer 2027 internships</strong></a>
+      </div>
       </div>
     </header>
 
